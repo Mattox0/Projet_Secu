@@ -2,20 +2,15 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <title>FlaskBlog</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+	<meta charset="UTF-8">
+	<title>FlaskBlog</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
 </head>
 
 <body>
 
-    <h1> Projet de Sécu </h1>
-    <label for="name">Username</label>
-    <input type="text" id="name" name="name" required minlength="2" maxlength="15" size="10">
-    <br>
-    <label for="password">Password</label>
-    <input type="text" id="password" name="password" required minlength="6" maxlength="30" size="10">
-    
+	<h1> Vous êtes connecté ! </h1>
+	<h2>Bonjour, {{username}}</h2>
 </body>
 
 </html>

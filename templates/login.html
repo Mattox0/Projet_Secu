@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<title>FlaskBlog</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+</head>
+
+<body>
+
+	<h1> Projet de Sécu </h1>
+	<h2>Veuillez vous connecter</h2>
+	<p>{{error}}</p>
+	<form action="/" method="post">
+		<label for="username">Username</label>
+		<input type="text" id="username" name="username" required minlength="2" maxlength="15" size="10">
+		<br>
+		<label for="password">Password</label>
+		<input type="text" id="password" name="password" required minlength="6" maxlength="30" size="10">
+		<br>
+		<button type="submit">Se connecter</button>
+	</form>
+
+</body>
+
+</html>
