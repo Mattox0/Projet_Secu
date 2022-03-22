@@ -17,7 +17,7 @@ def login():
         password = request.form['password']
         db = get_db_connection()
         db.execute(
-            f"SELECT * FROM users WHERE username='{username}' AND password='{password}'")
+            f"SELECT * FROM users WHERE username=? AND password=?", [username, password])
         row = db.fetchone()
         if row == None:
             db.close()
