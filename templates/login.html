@@ -3,8 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>FlaskBlog</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+	<title>Projet Sécu</title>
 </head>
 
 <body>
@@ -13,11 +12,11 @@
 	<h2>Veuillez vous connecter</h2>
 	<p>{{error}}</p>
 	<form action="/" method="post">
-		<label for="username">Username</label>
-		<input type="text" id="username" name="username" required minlength="2" maxlength="15" size="10">
+		<label for="login">Username</label>
+		<input type="text" id="login" name="login" required>
 		<br>
 		<label for="password">Password</label>
-		<input type="text" id="password" name="password" required minlength="6" maxlength="30" size="10">
+		<input type="text" id="password" name="password" required>
 		<br>
 		<button type="submit">Se connecter</button>
 	</form>

@@ -1,40 +1,30 @@
 import sqlite3
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
-    conn.row_factory = sqlite3.Row
-    return conn
+    return conn.cursor()
 
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
     error = ""
     if request.method == 'POST':
-        username = request.form['username']
+        username = request.form['login']
         password = request.form['password']
         db = get_db_connection()
-        try:
-            db.execute(
-                f"SELECT * FROM users WHERE username = {username} AND password = {password}")
-            print(
-                f"SELECT * FROM users WHERE username = {username} AND password = {password}")
-        except sqlite3.OperationalError:
-            print('erreur épargnée mdr')
+        db.execute(
+            f"SELECT * FROM users WHERE username='{username}' AND password='{password}'")
+        if db.fetchall() == []:
             db.close()
-            error = "Mauvais identifiants"
+            error = "Error Wrong credentials"
             return render_template('login.html', error=error)
         db.close()
-        print("bon identifiants")
-    return redirect("/home", username=username)
-
-
-@app.route('/home')
-def home():
-    return render_template('index.html')
+        return render_template("index.html", username=username)
+    return render_template('login.html')
 
 
 if __name__ == "__main__":
